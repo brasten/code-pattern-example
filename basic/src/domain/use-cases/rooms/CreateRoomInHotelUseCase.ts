@@ -1,19 +1,27 @@
 import { RoomInfo } from '../../lib/RoomInfo'
 import { UUIDService } from '../../lib/uuids/UUIDService'
+import { RoomRepositoryPort } from '../../ports/RoomRepositoryPort'
 
-export function buildUseCase(): CreateRoomInHotelUseCase {
+export function buildUseCase(deps: {
+  roomRepository: RoomRepositoryPort
+}): CreateRoomInHotelUseCase {
   const uuidService = new UUIDService()
+  const roomRepo    = deps.roomRepository
 
   /**
    * CreateRoomInHotelUseCase handles the creation of a room in the hotel.
    */
-  return function useCase({ room }) {
+  return async function useCase({ room }) {
+    const roomToAdd = {
+      id: uuidService.getUUID(),
+      ...room,
+    }
+
+    await roomRepo.addRooms([ roomToAdd ])
+
     return {
       status: 'OK',
-      room: {
-        id: uuidService.getUUID(),
-        ...room,
-      }
+      room: roomToAdd,
     }
   }
 }
@@ -30,4 +38,4 @@ export type CreationFailedResult = {
 }
 
 export type CreateRoomInHotelUseCase =
-  (args: { room: RoomValues }) => RoomCreatedResult | CreationFailedResult
+  (args: { room: RoomValues }) => Promise<RoomCreatedResult | CreationFailedResult>

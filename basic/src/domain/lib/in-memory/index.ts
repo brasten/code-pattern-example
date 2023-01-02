@@ -1,0 +1,1 @@
+export { InMemoryRoomRepository } from './InMemoryRoomRepository'
