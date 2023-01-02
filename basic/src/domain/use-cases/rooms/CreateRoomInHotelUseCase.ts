@@ -1,17 +1,5 @@
+import { RoomInfo } from '../../lib/RoomInfo'
 import { UUIDService } from '../../lib/uuids/UUIDService'
-
-export type RoomInfo = {
-  id: string
-  floor: number
-  roomNumber: number
-}
-export type RoomValues = Omit<RoomInfo, 'id'>
-
-export type CreateRoomInHotelUseCase =
-  (args: { room: RoomValues }) => {
-    status: 'OK';
-    room: RoomInfo
-  }
 
 export function buildUseCase(): CreateRoomInHotelUseCase {
   const uuidService = new UUIDService()
@@ -28,5 +16,18 @@ export function buildUseCase(): CreateRoomInHotelUseCase {
       }
     }
   }
-
 }
+
+export type RoomValues = Omit<RoomInfo, 'id'>
+
+export type RoomCreatedResult = {
+  status: 'OK'
+  room: RoomInfo
+}
+export type CreationFailedResult = {
+  status: 'FAIL'
+  code: 'DUPLICATE'
+}
+
+export type CreateRoomInHotelUseCase =
+  (args: { room: RoomValues }) => RoomCreatedResult | CreationFailedResult
