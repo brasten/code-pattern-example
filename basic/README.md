@@ -12,16 +12,5 @@
   - ... not within 24-hours of cancelation time
 
 
-
-# Script #
-
-- create `domain/ports`
-  - interfaces that our domain defines to allow it to access the outside world
-- create `domain/use-cases`
-  - represents the API that our application uses to interact with the domain model
-
-- start by creating a use case for the first requirement: "Create a room"
-
-
 ## Suggested Reading ##
 - https://wkrzywiec.medium.com/ports-adapters-architecture-on-example-19cab9e93be7
