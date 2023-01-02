@@ -1,3 +1,4 @@
+import { UUIDService } from '../../lib/uuids/UUIDService'
 
 export type RoomInfo = {
   id: string
@@ -13,6 +14,7 @@ export type CreateRoomInHotelUseCase =
   }
 
 export function buildUseCase(): CreateRoomInHotelUseCase {
+  const uuidService = new UUIDService()
 
   /**
    * CreateRoomInHotelUseCase handles the creation of a room in the hotel.
@@ -21,7 +23,7 @@ export function buildUseCase(): CreateRoomInHotelUseCase {
     return {
       status: 'OK',
       room: {
-        id: 'test-id',
+        id: uuidService.getUUID(),
         ...room,
       }
     }
