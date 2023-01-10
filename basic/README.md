@@ -3,7 +3,8 @@
 # Exercise 1: Hotel Booking System
 
 ## Tasks:
-- Create and delete rooms
+✔️ Create room 
+- Delete room
 - Create reservations for rooms
   - Rooms cannot be double-booked
   - New requirement on room deletion:

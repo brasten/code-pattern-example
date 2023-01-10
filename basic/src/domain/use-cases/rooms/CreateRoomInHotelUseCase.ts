@@ -17,7 +17,14 @@ export function buildUseCase(deps: {
       ...room,
     }
 
-    await roomRepo.addRooms([ roomToAdd ])
+    try {
+      await roomRepo.addRooms([ roomToAdd ])
+    } catch (err) {
+      return {
+        status: 'FAIL',
+        code: 'DUPLICATE',
+      }
+    }
 
     return {
       status: 'OK',
@@ -26,6 +33,9 @@ export function buildUseCase(deps: {
   }
 }
 
+/**
+ * The values of a Room to create that are passed to the use case.
+ */
 export type RoomValues = Omit<RoomInfo, 'id'>
 
 export type RoomCreatedResult = {

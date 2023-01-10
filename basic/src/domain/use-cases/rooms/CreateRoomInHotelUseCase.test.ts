@@ -56,7 +56,7 @@ test(`multiple rooms`, async t => {
 // Now we will need to "persist" rooms somewhere so we can validate
 // new room creation requests
 //
-test.skip(`validation: cannot create room with duplicate floor/roomNumber`, async t => {
+test(`validation: cannot create room with duplicate floor/roomNumber`, async t => {
   const [ createRoom, { roomRepository } ] = buildSubject()
 
   const room101 = {
@@ -73,4 +73,6 @@ test.skip(`validation: cannot create room with duplicate floor/roomNumber`, asyn
 
   t.is(resultOne.status, 'OK')
   t.is(resultTwo.status, 'FAIL')
+
+  t.is(roomRepository.records.length, 1)
 })
