@@ -22,6 +22,17 @@ export class InMemoryRoomRepository implements RoomRepositoryPort {
     this.records.push(...rooms)
     return null
   }
+
+  async removeRooms(rooms: Pick<RoomInfo, 'id'>[]): Promise<unknown> {
+    const filteredRecords = rooms.reduce(
+      (records, room) => records.filter(_ => _.id !== room.id),
+      this.records,
+    )
+
+    this.records = filteredRecords
+
+    return null
+  }
 }
 
 export function makeRoomInfos(vals?: Partial<RoomInfo>, args?: { count: number }): RoomInfo[] {

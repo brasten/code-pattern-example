@@ -7,4 +7,8 @@ export interface RoomRepositoryPort {
    */
   addRooms(rooms: RoomInfo[]): Promise<unknown>
 
+  /**
+   * Removes rooms from an external repository of some kind
+   */
+  removeRooms(rooms: Pick<RoomInfo, 'id'>[]): Promise<unknown>
 }
