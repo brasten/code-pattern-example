@@ -1,11 +1,9 @@
-
-
 # Exercise 1: Hotel Booking System
 
 ## Tasks:
 ✔️ Create room 
 ✔️ Delete room
-- Create reservations for rooms
+✔️ Create reservations for rooms
   - Rooms cannot be double-booked
   - New requirement on room deletion:
     - Rooms with reservations cannot be deleted
@@ -15,3 +13,4 @@
 
 ## Suggested Reading ##
 - https://wkrzywiec.medium.com/ports-adapters-architecture-on-example-19cab9e93be7
+- https://www.jamesshore.com/v2/blog/2018/testing-without-mocks#sociable-tests
