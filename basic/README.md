@@ -4,7 +4,7 @@
 
 ## Tasks:
 ✔️ Create room 
-- Delete room
+✔️ Delete room
 - Create reservations for rooms
   - Rooms cannot be double-booked
   - New requirement on room deletion:

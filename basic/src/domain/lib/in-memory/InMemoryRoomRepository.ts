@@ -23,6 +23,11 @@ export class InMemoryRoomRepository implements RoomRepositoryPort {
     return null
   }
 
+  async fetchByRoomNumber({ roomNumber }: { roomNumber: number }): Promise<RoomInfo[]> {
+    return this.records
+      .filter(room => room.roomNumber == roomNumber)
+  }
+
   async removeRooms(rooms: Pick<RoomInfo, 'id'>[]): Promise<unknown> {
     const filteredRecords = rooms.reduce(
       (records, room) => records.filter(_ => _.id !== room.id),
