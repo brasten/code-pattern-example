@@ -1,4 +1,12 @@
-# Exercise 1: Hotel Booking System
+# Hotel Booking System Example
+
+## Practices
+
+- Use a form of the [Ports and Adapters](https://wkrzywiec.medium.com/ports-adapters-architecture-on-example-19cab9e93be7) pattern
+- Implement "fake" implementations of ports to demonstrate test readability
+  benefits
+- Implement "sociable tests" (or similar) that use fake dependency implementations
+  for external dependencies but otherwise exercise the entire logic stack
 
 ## Tasks:
 - ✅ Create room
